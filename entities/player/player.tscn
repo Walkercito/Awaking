@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://qv8wx61ul4vq"]
+
+[ext_resource type="Texture2D" uid="uid://fpctxttb086o" path="res://assets/entities/player/idle/character_idle_1.png" id="1_2adws"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_usxmw"]
+[ext_resource type="Texture2D" uid="uid://cpm3dglwq68a0" path="res://assets/entities/player/idle/character_idle_2.png" id="2_4pqgd"]
+[ext_resource type="Texture2D" uid="uid://nlr36tbyv3s1" path="res://assets/entities/player/idle/character_idle_3.png" id="3_1jjgx"]
+[ext_resource type="Texture2D" uid="uid://7ltpa48nim7o" path="res://assets/entities/player/walking/character_walk_1.png" id="5_kyaaq"]
+[ext_resource type="Texture2D" uid="uid://bnu36bw1h2007" path="res://assets/entities/player/walking/character_walk_2.png" id="6_m5daj"]
+[ext_resource type="Texture2D" uid="uid://lhfk0y5a1n77" path="res://assets/entities/player/walking/character_walk_3.png" id="7_4o70h"]
+[ext_resource type="Texture2D" uid="uid://dkh8akabydgey" path="res://assets/entities/player/walking/character_walk_4.png" id="8_2ecdu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t11a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2adws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4pqgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1jjgx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kyaaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m5daj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4o70h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2ecdu")
+}],
+"loop": false,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2urcr"]
+radius = 35.0
+height = 226.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_usxmw")
+
+[node name="Texture" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t11a8")
+animation = &"walking"
+frame = 3
+frame_progress = 1.0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(2, -3)
+shape = SubResource("CapsuleShape2D_2urcr")
+debug_color = Color(0.919086, 6.72868e-05, 0.699791, 0.42)
